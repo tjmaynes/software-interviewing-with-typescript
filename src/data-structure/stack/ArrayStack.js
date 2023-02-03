@@ -5,7 +5,7 @@ export class MyArrayStack {
   }
 
   peek() {
-    if (this._length <= 0) throw 'No items to peek!'
+    if (this._length <= 0) return null
     return this._data[0]
   }
 
@@ -16,7 +16,7 @@ export class MyArrayStack {
 
   pop() {
     const item = this._data.shift()
-    if (!item) throw 'No items left to pop!'
+    if (!item) return null
 
     this._length -= 1
     return item

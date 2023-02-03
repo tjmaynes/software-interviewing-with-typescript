@@ -8,7 +8,7 @@ export class MyLinkedListStack {
   }
 
   peek() {
-    if (this._length <= 0) throw 'No items to peek!'
+    if (this._length <= 0) return null
     return this._top.value
   }
 
@@ -27,7 +27,7 @@ export class MyLinkedListStack {
   }
 
   pop() {
-    if (!this._top) throw 'No items left to pop!'
+    if (!this._top) return null
 
     let oldTop = this._top
     let top = this._top.next

@@ -21,7 +21,7 @@ describe('MyArrayStack', () => {
 
     describe('when items are not available', () => {
       it('should throw an exception', () => {
-        expect(() => stack.peek()).toThrow('No items to peek!')
+        expect(stack.peek()).toBeNull()
       })
     })
   })
@@ -53,7 +53,7 @@ describe('MyArrayStack', () => {
 
     describe('when items are not available', () => {
       it('should throw an exception', () => {
-        expect(() => stack.pop()).toThrow('No items left to pop!')
+        expect(stack.pop()).toBeNull()
       })
     })
   })
