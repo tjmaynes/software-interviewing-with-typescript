@@ -1,4 +1,4 @@
-import { MyArrayStack } from '../data-structure/stack/ArrayStack'
+import { MyArrayStack } from '../data-structures/stack'
 
 const validParentheses = (s) => {
   if (s.length === 1) return false

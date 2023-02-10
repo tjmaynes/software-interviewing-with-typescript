@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint .",
-    "fix": "eslint --fix ."
+    "lint:fix": "eslint --fix ."
   },
   "repository": "git+https://github.com/tjmaynes/sofware-interviewing-with-javascript.git",
   "author": "TJ Maynes <tj@tjmaynes.com>",

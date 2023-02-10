@@ -8,7 +8,7 @@ lint:
 	yarn $@
 
 fix:
-	yarn $@
+	yarn lint:$@
 
 deploy: install test
 
