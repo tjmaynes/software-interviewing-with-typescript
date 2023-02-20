@@ -9,7 +9,7 @@ export class SinglyLinkedList<T> implements ILinkedList<T> {
     this.length = 0
   }
 
-  insertAtHead(data: T): this {
+  insertAtHead(data: T): ILinkedList<T> {
     const tempNode = new ListNode(data);
     tempNode.next = this.head;
     this.head = tempNode;
@@ -17,7 +17,7 @@ export class SinglyLinkedList<T> implements ILinkedList<T> {
     return this;
   }
 
-  insertAtTail(data: T): this {
+  insertAtTail(data: T): ILinkedList<T> {
     const tempNode = new ListNode(data);
     if (this.head == null) {
       this.head = tempNode;
@@ -83,7 +83,21 @@ export class SinglyLinkedList<T> implements ILinkedList<T> {
     return false;
   }
 
-  removeDuplicates(): this {
+  deleteAtTail(): boolean {
+    if (this.head == null) return false;
+
+    let currentNode = this.head;
+    while (currentNode.next?.next != null) {
+      currentNode = currentNode.next;
+    }
+
+    currentNode.next = null;
+    this.length -= 1;
+
+    return true;
+  }
+
+  removeDuplicates(): ILinkedList<T> {
     if (this.isEmpty() || this.getHead()?.next == null) return this;
 
     let outerNode = this.getHead();
@@ -103,9 +117,28 @@ export class SinglyLinkedList<T> implements ILinkedList<T> {
   }
 
   union(list: ILinkedList<T>): ILinkedList<T> {
+    if (this.isEmpty()) return list;
+    else if (list.isEmpty()) return this;
+  
+    let currentNode = this.getHead();
+    while (currentNode?.next != null) {
+      currentNode = currentNode.next;
+    }
+
+    if (currentNode != null) {
+      const nextNode = list.getHead();
+      currentNode.next = nextNode;
+      this.removeDuplicates();
+    }
+
+    return this;
+  }
+
+  intersection(list: ILinkedList<T>): ILinkedList<T> {
+    const newList = new SinglyLinkedList<T>();
+
     let currentNode = list.getHead();
-    let newList = new SinglyLinkedList<T>();
-    
+
     while(currentNode != null) {
       if (this.search(currentNode.data))
         newList.insertAtTail(currentNode.data)

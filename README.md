@@ -78,11 +78,11 @@ A _graph_ is a set of nodes that are connected to each other in the form of a ne
 
 #### Common Data Structures
 
-| Type               | Access | Search | Insertion (at head) | Deletion (at head) | Insertion (at tail) | Deletion (at tail) |
-| ------------------ | ------ | ------ | ------------------- | ------------------ | ------------------- | ------------------ |
-| Array              | O(1)   | O(n)   | O(n)                | O(n)               | O(1)                | O(1)               |
-| Singly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(n)                | O(n)               |
-| Doubly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
+| Type               | Access | Search | Insertion (at head) | Deletion (at head) | Insertion (at tail) | Deletion (at tail) | Delete (anywhere) |
+| ------------------ | ------ | ------ | ------------------- | ------------------ | ------------------- | ------------------ | ----------------- |
+| Array              | O(1)   | O(n)   | O(n)                | O(n)               | O(1)                | O(1)               | O(1)              |
+| Singly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(n)                | O(n)               | O(n)              |
+| Doubly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               | O(n)              |
 | Stack              | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
 | Queue              | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
 | Binary Search Tree |        |        |                     |                    |                     |                    |

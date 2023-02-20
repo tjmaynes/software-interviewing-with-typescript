@@ -118,6 +118,32 @@ const runTests = (testName: string, newLinkedList: () => ILinkedList<number>) =>
           })
         })
       })
+
+      describe('#deleteAtTail', () => {
+        describe('when head exists in linkedlist', () => {
+          beforeEach(() => {
+            linkedList
+              .insertAtHead(10)
+              .insertAtHead(9)
+              .insertAtHead(8)
+              .insertAtHead(-1)
+              .insertAtTail(7)
+              .insertAtTail(14)
+          })
+    
+          it('should return true', () => {
+            expect(linkedList.deleteAtTail()).toBeTruthy()
+            expect(linkedList.toList()).toStrictEqual([-1, 8, 9, 10, 7])
+          })
+        })
+    
+        describe('when head does not exist in linkedlist', () => {
+          it('should return false', () => {
+            expect(linkedList.deleteAtTail()).toBeFalsy()
+            expect(linkedList.toList()).toStrictEqual([])
+          })
+        })
+      })
     
       describe('#removeDuplicates', () => {
         describe('when duplicates exist in linkedlist', () => {
@@ -178,6 +204,33 @@ const runTests = (testName: string, newLinkedList: () => ILinkedList<number>) =>
       
           it('should return a union between the two linkedlists', () => {
             const actual = linkedList.union(otherLinkedList)
+            expect(actual.toList()).toStrictEqual([8,9,6,10,3,-1])
+          })
+        })
+      })
+
+      describe('#intersection', () => {
+        describe('when a intersection exists between two given linkedlists', () => {
+          const otherLinkedList = newLinkedList()
+            .insertAtTail(10)
+            .insertAtTail(9)
+            .insertAtHead(-1)
+            .insertAtHead(3)
+            .insertAtTail(6)
+    
+          beforeEach(() => {
+            linkedList
+              .insertAtHead(10)
+              .insertAtHead(10)
+              .insertAtHead(6)
+              .insertAtHead(9)
+              .insertAtHead(8)
+              .insertAtHead(8)
+              .insertAtTail(6)
+          })
+      
+          it('should return a intersection between the two linkedlists', () => {
+            const actual = linkedList.intersection(otherLinkedList)
             expect(actual.toList()).toStrictEqual([10, 9, 6])
           })
         })
@@ -246,5 +299,5 @@ const runTests = (testName: string, newLinkedList: () => ILinkedList<number>) =>
 
 describe('LinkedLists', () => {
     runTests('SinglyLinkedLists', () => new SinglyLinkedList());
-    // runTests('DoublyLinkedLists', () => new DoublyLinkedList())
+    runTests('DoublyLinkedLists', () => new DoublyLinkedList())
 })

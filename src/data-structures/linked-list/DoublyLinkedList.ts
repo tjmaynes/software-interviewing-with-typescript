@@ -11,7 +11,7 @@ export class DoublyLinkedList<T> implements ILinkedList<T> {
     this.length = 0
   }
 
-  insertAtHead(data: T): this {
+  insertAtHead(data: T): ILinkedList<T> {
     const newHead = new ListNode(data);
     newHead.next = this.head;
     this.head = newHead;
@@ -24,7 +24,7 @@ export class DoublyLinkedList<T> implements ILinkedList<T> {
     return this;
   }
 
-  insertAtTail(data: T): this {
+  insertAtTail(data: T): ILinkedList<T> {
     let newTail = new ListNode(data);
     if (this.tail == null) {
       this.head = newTail;
@@ -53,40 +53,132 @@ export class DoublyLinkedList<T> implements ILinkedList<T> {
   }
 
   delete(data: T): boolean {
-    console.log(this);
     if (this.isEmpty()) return false;
 
     let currentNode = this.getHead();
+
+    if (currentNode?.data == data) {
+      this.head = currentNode.next;
+      this.length -= 1;
+      return true;
+    }
+
     while (currentNode != null && currentNode.next != null) {
-      if (currentNode.next.data == data) {
-        const nextNode = currentNode.next.next;
-        if (nextNode?.prev) {
-          nextNode.prev = currentNode.next;
-        }
-
-        currentNode.next = nextNode;
-      }
-
+      if (currentNode.next.data == data) break;
       currentNode = currentNode.next;
+    }
+
+    if (currentNode?.next?.next) {
+      const nextNode = currentNode.next.next;
+      nextNode.prev = currentNode;
+      currentNode.next = nextNode;
+
+      this.length -= 1;
+
+      return true;
+    } else if (currentNode?.next) {
+      currentNode.next = null;
+      this.length -= 1;
+      return true
     }
 
     return false;
   }
 
   deleteAtHead(): boolean {
-    throw new Error("Method not implemented.")
+    if (this.head == null || this.head.next == null) return false;
+
+    const oldHead = this.head;
+    if (oldHead.next != null) {
+      oldHead.next.prev = null;
+    }
+    this.head = oldHead.next;
+    this.length -= 1;
+
+    return true;
   }
 
-  removeDuplicates(): this {
-    throw new Error("Method not implemented.")
+  deleteAtTail(): boolean {
+    if (this.tail == null) return false;
+
+    if (this.tail.prev != null) {
+      const previousTail = this.tail.prev;
+      previousTail.next = null;
+      this.tail = previousTail;
+      this.length -= 1;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  removeDuplicates(): ILinkedList<T> {
+    if (this.isEmpty()) return this;
+
+    let outerNode = this.getHead();
+    while (outerNode != null) {
+      let innerNode = outerNode;
+      while (innerNode.next != null) {
+        if (innerNode.next.data == outerNode.data) {
+          const nextNode = innerNode.next.next;
+          if (nextNode) nextNode.prev = innerNode;
+          innerNode.next = nextNode;
+        } else {
+          innerNode = innerNode.next;
+        }
+      }
+      outerNode = outerNode.next;
+    }
+
+    return this;
   }
 
   union(list: ILinkedList<T>): ILinkedList<T> {
-    throw new Error("Method not implemented.")
+    if (this.isEmpty()) return list;
+    else if (list.isEmpty()) return this;
+  
+    let currentNode = this.getHead();
+    while (currentNode?.next != null) {
+      currentNode = currentNode.next;
+    }
+
+    if (currentNode != null) {
+      const nextNode = list.getHead();
+      if (nextNode != null)
+        nextNode.prev = currentNode;
+      currentNode.next = nextNode;
+      this.removeDuplicates();
+    }
+
+    return this;
+  }
+
+  intersection(list: ILinkedList<T>): ILinkedList<T> {
+    let currentNode = list.getHead();
+    let newList = new DoublyLinkedList<T>();
+    
+    while(currentNode != null) {
+      if (this.search(currentNode.data))
+        newList.insertAtTail(currentNode.data)
+
+      currentNode = currentNode.next
+    }
+
+    return newList;
   }
 
   nthNodeFromLast(n: number): ListNode<T> | null {
-    throw new Error("Method not implemented.")
+    if (n < 0 || n > this.size()) return null;
+
+    let currentNode = this.tail;
+    let place = n;
+    while (currentNode != null && place > 0) {
+      place -= 1;
+      currentNode = currentNode.prev;
+    }
+
+    return currentNode;
   }
 
   getHead(): ListNode<T> | null {

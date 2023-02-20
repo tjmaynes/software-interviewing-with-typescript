@@ -11,13 +11,15 @@ export class ListNode<T> {
 }
 
 export interface ILinkedList<T> {
-    insertAtHead(data: T): this
-    insertAtTail(data: T): this
+    insertAtHead(data: T): ILinkedList<T>
+    insertAtTail(data: T): ILinkedList<T>
     search(data: T): boolean
     delete(data: T): boolean
     deleteAtHead(): boolean
-    removeDuplicates(): this
+    deleteAtTail(): boolean
+    removeDuplicates(): ILinkedList<T>
     union(list: ILinkedList<T>): ILinkedList<T>
+    intersection(list: ILinkedList<T>): ILinkedList<T>
     nthNodeFromLast(n: number): ListNode<T> | null
     getHead(): ListNode<T> | null
     size(): number
