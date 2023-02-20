@@ -1,6 +1,6 @@
-# Software Interviewing with Javascript
+# Software Interviewing with Typescript
 
-> My interviewing preparation (data structures, algorithms, etc) work in Javascript.
+> My interviewing preparation (data structures, algorithms, etc) work.
 
 ## Requirements
 
@@ -51,17 +51,42 @@ make test
 | `e^n`            | Exponential  |
 | `n!`             | n-Factorial  |
 
+### Data Structures
+
+#### Graphs
+
+A _graph_ is a set of nodes that are connected to each other in the form of a network. A _vertex_ is a part of a graph. A collection of vertices form a graph. An _edge_ is a link between two vertices. It can be uni-directional or bi-directional, depending on your graph.
+
+##### Terminology
+
+- Degree of a vertex: the total number of edges connected to a vertex. There are two types of degrees:
+  - In-Degree: The total number of incoming edges connected to a vertex.
+  - Out-Degree: The total number of outgoing edges connected to a vertex.
+- Parallel Edges: Two unidirectional edges are parallel if they have the same end vertices. Two directed edges are parallel if they have the same origin and destination.
+- Self Loop: This occurs when an edge starts and ends on the same vertex.
+- Adjacency: Two vertices are said to be adjacent if there is an edge connecting them directly.
+
+##### Types of Graphs
+
+- Undirected: All edges are undirected, there is no direction to the edges. You can calculate the number of edges by using the following formula: `(n(n - 1))/2`.
+- Directed: Edges are unidirectional. You can calculate the number of edges by using the following formula: `n*(n - 1)`.
+
+##### Representation
+
+- Adjacency Matrix: a two dimensional matrix where each cell can contain a _0_ or a _1_. The row and column headings represent the vertices.
+- Adjacency List:
+
 #### Common Data Structures
 
-| Type               | Access | Search | Insertion | Deletion |
-| ------------------ | ------ | ------ | --------- | -------- |
-| Array              | O(1)   | O(n)   | O(1)      | O(n)     |
-| Stack              | O(n)   | O(n)   | O(1)      | O(1)     |
-| Singly-Linked List | O(n)   | O(n)   | O(1)      | O(1)     |
-| Doubly-Linked List | O(n)   | O(n)   | O(1)      | O(1)     |
-| Hash Table         |        |        |           |          |
-| Queue              |        |        |           |          |
-| Binary Search Tree |        |        |           |          |
+| Type               | Access | Search | Insertion (at head) | Deletion (at head) | Insertion (at tail) | Deletion (at tail) |
+| ------------------ | ------ | ------ | ------------------- | ------------------ | ------------------- | ------------------ |
+| Array              | O(1)   | O(n)   | O(n)                | O(n)               | O(1)                | O(1)               |
+| Singly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(n)                | O(n)               |
+| Doubly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
+| Stack              | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
+| Queue              | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
+| Binary Search Tree |        |        |                     |                    |                     |                    |
+| Hash Table         |        |        |                     |                    |                     |                    |
 
 #### Sorting Algorithms
 
