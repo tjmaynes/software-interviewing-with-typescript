@@ -29,9 +29,9 @@ export interface ILinkedList<T> {
 
 export interface IStack<T> {
   push(data: T): IStack<T>
-  pop(): T
+  pop(): T | null
   isEmpty(): boolean
-  getTop(): T
+  getTop(): T | null
   size(): number
 }
 

@@ -88,9 +88,8 @@ export class DoublyLinkedList<T> implements ILinkedList<T> {
     if (this.head == null || this.head.next == null) return false
 
     const oldHead = this.head
-    if (oldHead.next != null) {
-      oldHead.next.prev = null
-    }
+    if (oldHead.next != null) oldHead.next.prev = null
+
     this.head = oldHead.next
     this.length -= 1
 
