@@ -12,11 +12,10 @@ const runTest = (testName: string, getNewStack: () => IStack<number>) => {
 
     describe('#push', () => {
       it('should add an item to the top of the stack', () => {
-        stack.push(10)
-        stack.push(7)
+        stack.push(10).push(7).push(8)
 
-        expect(stack.getTop()).toBe(7)
-        expect(stack.size()).toBe(2)
+        expect(stack.getTop()).toBe(8)
+        expect(stack.size()).toBe(3)
       })
     })
 
@@ -30,6 +29,7 @@ const runTest = (testName: string, getNewStack: () => IStack<number>) => {
           const result = stack.pop()
 
           expect(result).toBe(12)
+          expect(stack.getTop()).toBe(10)
           expect(stack.size()).toBe(1)
         })
       })

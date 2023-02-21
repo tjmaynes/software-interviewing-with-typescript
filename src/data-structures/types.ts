@@ -22,17 +22,28 @@ export interface ILinkedList<T> {
   intersection(list: ILinkedList<T>): ILinkedList<T>
   nthNodeFromLast(n: number): ListNode<T> | null
   getHead(): ListNode<T> | null
+  getTail(): ListNode<T> | null
   size(): number
   isEmpty(): boolean
   toList(): T[]
 }
 
 export interface IStack<T> {
-  push(data: T): IStack<T>
+  push(element: T): IStack<T>
   pop(): T | null
   isEmpty(): boolean
   getTop(): T | null
   size(): number
+}
+
+export interface IQueue<T> {
+  enqueue(element: T): boolean
+  dequeue(): boolean
+  getFront(): T | null
+  getTail(): T | null
+  isEmpty(): boolean
+  size(): number
+  toList(): T[]
 }
 
 export interface IGraph {

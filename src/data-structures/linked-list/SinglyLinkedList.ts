@@ -168,6 +168,17 @@ export class SinglyLinkedList<T> implements ILinkedList<T> {
     return this.head
   }
 
+  getTail(): ListNode<T> | null {
+    let currentNode = this.getHead()
+    if (currentNode == null) return null
+
+    while (currentNode?.next != null) {
+      currentNode = currentNode.next
+    }
+
+    return currentNode
+  }
+
   isEmpty(): boolean {
     return this.head == null
   }

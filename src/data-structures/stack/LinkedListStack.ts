@@ -10,9 +10,9 @@ export class LinkedListStack<T> implements IStack<T> {
     this.top = null
   }
 
-  push(data: T): IStack<T> {
-    this.items.insertAtHead(data)
-    this.top = data
+  push(element: T): IStack<T> {
+    this.items.insertAtHead(element)
+    this.top = element
     return this
   }
 

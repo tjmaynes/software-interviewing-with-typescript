@@ -9,9 +9,9 @@ export class ArrayStack<T> implements IStack<T> {
     this.top = null
   }
 
-  push(data: T): IStack<T> {
-    this.items.push(data)
-    this.top = data
+  push(element: T): IStack<T> {
+    this.items.push(element)
+    this.top = element
     return this
   }
 
