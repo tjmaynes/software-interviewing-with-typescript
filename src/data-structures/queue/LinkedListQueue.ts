@@ -1,7 +1,7 @@
 import { DoublyLinkedList } from '../linked-list'
 import { ILinkedList, IQueue } from '../types'
 
-export class Queue<T> implements IQueue<T> {
+export class LinkedListQueue<T> implements IQueue<T> {
   private items: ILinkedList<T>
 
   constructor() {

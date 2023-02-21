@@ -1,9 +1,9 @@
-import { Queue } from '../data-structures/queue/Queue'
+import { LinkedListQueue } from '../data-structures/queue'
 
 const findBinary = (n: number): string[] => {
   const result: string[] = []
 
-  const queue = new Queue<string>()
+  const queue = new LinkedListQueue<string>()
   queue.enqueue('1')
 
   for (let i = 0; i < n; i++) {

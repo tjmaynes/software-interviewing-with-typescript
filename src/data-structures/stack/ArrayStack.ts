@@ -16,14 +16,11 @@ export class ArrayStack<T> implements IStack<T> {
   }
 
   pop(): T | null {
-    if (!this.isEmpty()) {
-      if (this.items.length == 1) this.top = null
-      else this.top = this.items[this.items.length - 2]
+    if (this.isEmpty()) return null
 
-      return this.items.pop() || null
-    } else {
-      return null
-    }
+    this.top = this.items.length == 1 ? null : this.items[this.items.length - 2]
+
+    return this.items.pop() || null
   }
 
   isEmpty(): boolean {
@@ -37,5 +34,9 @@ export class ArrayStack<T> implements IStack<T> {
 
   size(): number {
     return this.items.length
+  }
+
+  toList(): T[] {
+    return this.items
   }
 }

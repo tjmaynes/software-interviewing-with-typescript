@@ -18,7 +18,12 @@ export class LinkedListStack<T> implements IStack<T> {
 
   pop(): T | null {
     if (this.isEmpty()) return null
-    if (this.items.getHead()?.next != null) {
+    else if (this.size() == 1) {
+      this.items.deleteAtHead()
+      const oldTop = this.top
+      this.top = null
+      return oldTop
+    } else if (this.items.getHead()?.next != null) {
       if (this.items.deleteAtHead()) {
         const oldTop = this.top
         this.top = this.items.getHead()?.data || null
@@ -42,5 +47,9 @@ export class LinkedListStack<T> implements IStack<T> {
 
   size(): number {
     return this.items.size()
+  }
+
+  toList(): T[] {
+    return this.items.toList()
   }
 }

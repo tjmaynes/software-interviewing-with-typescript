@@ -1,6 +1,5 @@
 import { IStack } from '../types'
-import { ArrayStack } from './ArrayStack'
-import { LinkedListStack } from './LinkedListStack'
+import { ArrayStack, LinkedListStack } from '.'
 
 const runTest = (testName: string, getNewStack: () => IStack<number>) => {
   describe(testName, () => {

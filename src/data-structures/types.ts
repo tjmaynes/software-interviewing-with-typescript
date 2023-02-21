@@ -34,6 +34,7 @@ export interface IStack<T> {
   isEmpty(): boolean
   getTop(): T | null
   size(): number
+  toList(): T[]
 }
 
 export interface IQueue<T> {
