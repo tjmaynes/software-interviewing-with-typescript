@@ -1,1 +1,2 @@
-export * from './Graph'
+export * from './DirectedGraph'
+export * from './UndirectedGraph'

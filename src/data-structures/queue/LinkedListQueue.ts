@@ -3,22 +3,29 @@ import { ILinkedList, IQueue } from '../types'
 
 export class LinkedListQueue<T> implements IQueue<T> {
   private items: ILinkedList<T>
+  private sizeLimit: number
 
-  constructor() {
+  constructor(sizeLimit: number) {
+    this.sizeLimit = sizeLimit
     this.items = new DoublyLinkedList<T>()
   }
 
   enqueue(element: T): boolean {
-    this.items.insertAtTail(element)
-    return true
+    if (this.items.size() < this.sizeLimit) {
+      this.items.insertAtTail(element)
+      return true
+    } else {
+      return false
+    }
   }
 
-  dequeue(): boolean {
-    if (this.isEmpty()) return false
+  dequeue(): T | null {
+    if (this.isEmpty()) return null
 
+    const oldHead = this.items.getHead()?.data || null
     this.items.deleteAtHead()
 
-    return true
+    return oldHead
   }
 
   getFront(): T | null {

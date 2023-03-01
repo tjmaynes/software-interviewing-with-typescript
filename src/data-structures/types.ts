@@ -39,7 +39,7 @@ export interface IStack<T> {
 
 export interface IQueue<T> {
   enqueue(element: T): boolean
-  dequeue(): boolean
+  dequeue(): T | null
   getFront(): T | null
   getTail(): T | null
   isEmpty(): boolean
@@ -48,5 +48,8 @@ export interface IQueue<T> {
 }
 
 export interface IGraph {
+  vertices: number
+  list: ILinkedList<number>[]
   addEdge(source: number, destination: number): IGraph
+  print(): void
 }

@@ -53,6 +53,32 @@ make test
 
 ### Data Structures
 
+#### Arrays
+
+##### Asymptotic Time Complexity
+
+| Type  | Access | Search | Insertion (at head) | Deletion (at head) | Insertion (at tail) | Deletion (at tail) | Delete (anywhere) |
+| ----- | ------ | ------ | ------------------- | ------------------ | ------------------- | ------------------ | ----------------- |
+| Array | O(1)   | O(n)   | O(n)                | O(n)               | O(1)                | O(1)               | O(1)              |
+
+#### Linked Lists
+
+##### Asymptotic Time Complexity
+
+| Type               | Access | Search | Insertion (at head) | Deletion (at head) | Insertion (at tail) | Deletion (at tail) | Delete (anywhere) |
+| ------------------ | ------ | ------ | ------------------- | ------------------ | ------------------- | ------------------ | ----------------- |
+| Singly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(n)                | O(n)               | O(n)              |
+| Doubly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               | O(n)              |
+
+#### Stacks & Queues
+
+##### Asymptotic Time Complexity
+
+| Type  | Access | Search | Insertion (at head) | Deletion (at head) | Insertion (at tail) | Deletion (at tail) | Delete (anywhere) |
+| ----- | ------ | ------ | ------------------- | ------------------ | ------------------- | ------------------ | ----------------- |
+| Stack | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               | O(n)              |
+| Queue | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               | O(n)              |
+
 #### Graphs
 
 A _graph_ is a set of nodes that are connected to each other in the form of a network. A _vertex_ is a part of a graph. A collection of vertices form a graph. An _edge_ is a link between two vertices. It can be uni-directional or bi-directional, depending on your graph.
@@ -65,6 +91,7 @@ A _graph_ is a set of nodes that are connected to each other in the form of a ne
 - Parallel Edges: Two unidirectional edges are parallel if they have the same end vertices. Two directed edges are parallel if they have the same origin and destination.
 - Self Loop: This occurs when an edge starts and ends on the same vertex.
 - Adjacency: Two vertices are said to be adjacent if there is an edge connecting them directly.
+-
 
 ##### Types of Graphs
 
@@ -73,20 +100,20 @@ A _graph_ is a set of nodes that are connected to each other in the form of a ne
 
 ##### Representation
 
-- Adjacency Matrix: a two dimensional matrix where each cell can contain a _0_ or a _1_. The row and column headings represent the vertices.
-- Adjacency List:
+- Adjacency Matrix: a two dimensional matrix where each cell can contain a _0_ or a _1_. The row and column headings represent the vertices. For a directed graph, the convention is to think of the rows as sources and the columns as destinations.
+- Adjacency List: an array of linked lists is used to store all the edges in the graph, the size of the array is equal to the number of vertices. Each index represents a specific vertex in the graph. The entry at index `i` of the array contains a linked list containing the vertices that are adjacent to vertex `i`.
 
-#### Common Data Structures
+| Operation     | Adjacency List | Adjacency Matrix |
+| ------------- | -------------- | ---------------- |
+| Add vertex    | O(1)           | O(V^2)           |
+| Remove vertex | O(V + E)       | O(V^2)           |
+| Add edge      | O(1)           | O(1)             |
+| Remove edge   | O(E)           | O(1)             |
 
-| Type               | Access | Search | Insertion (at head) | Deletion (at head) | Insertion (at tail) | Deletion (at tail) | Delete (anywhere) |
-| ------------------ | ------ | ------ | ------------------- | ------------------ | ------------------- | ------------------ | ----------------- |
-| Array              | O(1)   | O(n)   | O(n)                | O(n)               | O(1)                | O(1)               | O(1)              |
-| Singly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(n)                | O(n)               | O(n)              |
-| Doubly-Linked List | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               | O(n)              |
-| Stack              | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
-| Queue              | O(n)   | O(n)   | O(1)                | O(1)               | O(1)                | O(1)               |
-| Binary Search Tree |        |        |                     |                    |                     |                    |
-| Hash Table         |        |        |                     |                    |                     |                    |
+##### Graph Traversal Algorithms
+
+- Breadth-first search (BFS): all nodes at a certain level are travered before moving on to the next level.
+- Depth-first search (DFS): start from a node, traverse until we reach farthest level, and then jump back to the starting node and pick another adjacent node.
 
 #### Sorting Algorithms
 

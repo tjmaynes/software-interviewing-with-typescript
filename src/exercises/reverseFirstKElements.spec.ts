@@ -5,7 +5,7 @@ import { IQueue } from '../data-structures/types'
 const reverseFirstKElements = <T>(input: IQueue<T>, k: number): IQueue<T> => {
   if (input.size() < k) return input
 
-  const queue = new LinkedListQueue<T>()
+  const queue = new LinkedListQueue<T>(input.size())
   const stack = new LinkedListStack<T>()
 
   for (let i = 0; i < k; i++) {
@@ -30,7 +30,7 @@ const reverseFirstKElements = <T>(input: IQueue<T>, k: number): IQueue<T> => {
 describe('reverseFirstKElements', () => {
   describe('when given a queue and a number', () => {
     it('should return the queue with the first k elements reversed', () => {
-      const queue = new LinkedListQueue()
+      const queue = new LinkedListQueue(9)
       ;[1, 2, 3, 4, 5, 6, 7, 8].forEach((num) => queue.enqueue(num))
 
       expect(reverseFirstKElements(queue, 4).toList()).toStrictEqual([
@@ -41,7 +41,7 @@ describe('reverseFirstKElements', () => {
 
   describe('when given a k that is larger than queue', () => {
     it('should return the queue', () => {
-      const queue = new LinkedListQueue()
+      const queue = new LinkedListQueue<number>(4)
       ;[1].forEach((num) => queue.enqueue(num))
 
       expect(reverseFirstKElements(queue, 4).toList()).toStrictEqual([1])

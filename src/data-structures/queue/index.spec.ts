@@ -1,5 +1,6 @@
 import { IQueue } from '../types'
 import { LinkedListQueue } from '.'
+import { ArrayQueue } from './ArrayQueue'
 
 const runTest = (testName: string, createQueue: () => IQueue<number>) => {
   describe(testName, () => {
@@ -28,7 +29,7 @@ const runTest = (testName: string, createQueue: () => IQueue<number>) => {
         })
 
         it('removes elements front elements from queue', () => {
-          expect(queue.dequeue()).toBeTruthy()
+          expect(queue.dequeue()).toEqual(99)
 
           expect(queue.size()).toEqual(2)
           expect(queue.toList()).toStrictEqual([14, 7])
@@ -39,5 +40,7 @@ const runTest = (testName: string, createQueue: () => IQueue<number>) => {
 }
 
 describe('Queue', () => {
-  runTest('LinkedListQueue', () => new LinkedListQueue<number>())
+  const sizeLimit = 3
+  runTest('LinkedListQueue', () => new LinkedListQueue<number>(sizeLimit))
+  runTest('ArrayQueue', () => new ArrayQueue<number>(sizeLimit))
 })
