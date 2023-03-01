@@ -22,7 +22,7 @@ export class LinkedListQueue<T> implements IQueue<T> {
   dequeue(): T | null {
     if (this.isEmpty()) return null
 
-    const oldHead = this.items.getHead()?.data || null
+    const oldHead = this.items.getHead()?.data ?? null
     this.items.deleteAtHead()
 
     return oldHead

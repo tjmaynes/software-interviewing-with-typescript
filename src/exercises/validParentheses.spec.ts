@@ -3,7 +3,7 @@ import { ArrayStack } from '../data-structures/stack'
 const validParentheses = (s: string) => {
   if (s.length <= 1) return false
 
-  const stack = new ArrayStack()
+  const stack = new ArrayStack(s.length)
 
   for (let i = 0; i <= s.length - 1; i++) {
     const currChar = s.charAt(i)

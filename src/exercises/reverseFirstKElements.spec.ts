@@ -6,7 +6,7 @@ const reverseFirstKElements = <T>(input: IQueue<T>, k: number): IQueue<T> => {
   if (input.size() < k) return input
 
   const queue = new LinkedListQueue<T>(input.size())
-  const stack = new LinkedListStack<T>()
+  const stack = new LinkedListStack<T>(input.size())
 
   for (let i = 0; i < k; i++) {
     const front = input.getFront()

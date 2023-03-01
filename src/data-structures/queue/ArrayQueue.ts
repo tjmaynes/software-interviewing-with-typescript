@@ -10,11 +10,11 @@ export class ArrayQueue<T> implements IQueue<T> {
   }
 
   enqueue(element: T): boolean {
-    if (this.items.length >= this.sizeLimit) {
-      return false
-    } else {
+    if (this.items.length < this.sizeLimit) {
       this.items.push(element)
       return true
+    } else {
+      return false
     }
   }
 

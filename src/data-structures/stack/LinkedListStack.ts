@@ -4,15 +4,19 @@ import { IStack } from '../types'
 export class LinkedListStack<T> implements IStack<T> {
   private items: DoublyLinkedList<T>
   private top: T | null
+  private sizeLimit: number
 
-  constructor() {
+  constructor(sizeLimit: number) {
+    this.sizeLimit = sizeLimit
     this.items = new DoublyLinkedList<T>()
     this.top = null
   }
 
   push(element: T): IStack<T> {
-    this.items.insertAtHead(element)
-    this.top = element
+    if (this.items.size() < this.sizeLimit) {
+      this.items.insertAtHead(element)
+      this.top = element
+    }
     return this
   }
 

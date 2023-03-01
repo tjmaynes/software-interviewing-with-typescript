@@ -3,15 +3,20 @@ import { IStack } from '../types'
 export class ArrayStack<T> implements IStack<T> {
   private items: T[]
   private top: T | null
+  private sizeLimit: number
 
-  constructor() {
+  constructor(sizeLimit: number) {
+    this.sizeLimit = sizeLimit
     this.items = []
     this.top = null
   }
 
   push(element: T): IStack<T> {
-    this.items.push(element)
-    this.top = element
+    if (this.items.length < this.sizeLimit) {
+      this.items.push(element)
+      this.top = element
+    }
+
     return this
   }
 
@@ -20,7 +25,7 @@ export class ArrayStack<T> implements IStack<T> {
 
     this.top = this.items.length == 1 ? null : this.items[this.items.length - 2]
 
-    return this.items.pop() || null
+    return this.items.pop() ?? null
   }
 
   isEmpty(): boolean {

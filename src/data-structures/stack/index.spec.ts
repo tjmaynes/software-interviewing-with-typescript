@@ -43,6 +43,7 @@ const runTest = (testName: string, getNewStack: () => IStack<number>) => {
 }
 
 describe('Stack', () => {
-  runTest('ArrayStack', () => new ArrayStack())
-  runTest('LinkedListStack', () => new LinkedListStack())
+  const sizeLimit = 3
+  runTest('ArrayStack', () => new ArrayStack(sizeLimit))
+  runTest('LinkedListStack', () => new LinkedListStack(sizeLimit))
 })
